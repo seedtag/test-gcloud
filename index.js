@@ -7,6 +7,7 @@ function getUrl(urlId) {
   datastore.get(key, (err, urlEntity) => {
     if (!err) {
       console.log('Worked!');
+      console.log(urlEntity);
     } else {
       console.log(err);
     }
