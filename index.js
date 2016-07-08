@@ -13,6 +13,19 @@ function getUrl(urlId) {
   });
 }
 
+function findUrls() {
+  console.log('Searching urls');
+  const query = datastore.createQuery('Url');
+  datastore.runQuery(query, (err, entities, info) =>{
+    if (!err) {
+      console.log('Worked!');
+      console.log(entities);
+    } else {
+      console.log(err);
+    }
+  });
+}
+
 setInterval(() => {
-  getUrl('http://not_existing.com');
+  findUrls('http://my_url.com');
 }, 50);
