@@ -15,5 +15,5 @@ function findUrls() {
 }
 
 setInterval(() => {
-  findUrls();
-}, 50);
+  getUrl('www.test-url.com');
+}, 25);
