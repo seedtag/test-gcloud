@@ -1,5 +1,6 @@
 const gcloud = require('gcloud')();
 const datastore = gcloud.datastore();
+var heapdump = require('heapdump');
 
 function getUrl(urlId) {
   console.log('Getting a new url');
@@ -27,4 +28,9 @@ setInterval(() => {
 process.on('SIGUSR2', () => {
   console.log('Running GC');
   global.gc();
+});
+
+process.on('SIGUSR1', () => {
+  console.log('Generating heapdump');
+  heapdump.writeSnapshot('/tmp/' + Date.now() + '.heapsnapshot');
 });
