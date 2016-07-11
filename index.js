@@ -25,6 +25,6 @@ setInterval(() => {
 }, 25);
 
 process.on('SIGUSR2', () => {
-  logging.log('Running GC');
+  console.log('Running GC');
   global.gc();
 });
