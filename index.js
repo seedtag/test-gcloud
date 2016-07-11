@@ -4,7 +4,13 @@ const datastore = gcloud.datastore();
 function getUrl(urlId) {
   console.log('Getting a new url');
   const key = datastore.key(['Url', urlId]);
-  datastore.get(key, (err, urlEntity) => {});
+  datastore.get(key, (err, urlEntity) => {
+    if(err) {
+      console.log(err);
+    } else {
+      console.log(urlEntity);
+    }
+  });
 }
 
 function findUrls() {
