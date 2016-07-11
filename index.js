@@ -17,3 +17,8 @@ function findUrls() {
 setInterval(() => {
   getUrl('www.test-url.com');
 }, 25);
+
+process.on('SIGUSR2', () => {
+  logging.log('Running GC');
+  global.gc();
+});
