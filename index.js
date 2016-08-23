@@ -1,9 +1,9 @@
 const gcloud = require('gcloud')();
 const datastore = gcloud.datastore();
-var heapdump = require('heapdump');
+const shortid = require('shortid');
 
 function getUrl(urlId) {
-  const timeKey = `Time_${new Date()}`;
+  const timeKey = `Time_${shortid.generate()}`;
   console.time(timeKey);
   const key = datastore.key(['Url', urlId]);
   datastore.get(key, (err, urlEntity) => {
@@ -21,13 +21,3 @@ function findUrls() {
 setInterval(() => {
   getUrl('www.test-url.com');
 }, 25);
-
-process.on('SIGUSR2', () => {
-  console.log('Running GC');
-  global.gc();
-});
-
-process.on('SIGUSR1', () => {
-  console.log('Generating heapdump');
-  heapdump.writeSnapshot('/tmp/' + Date.now() + '.heapsnapshot');
-});

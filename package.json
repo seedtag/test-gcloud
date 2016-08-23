@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "gcloud": "^0.36.0",
-    "heapdump": "^0.3.7"
+    "heapdump": "^0.3.7",
+    "shortid": "^2.2.6"
   }
 }
