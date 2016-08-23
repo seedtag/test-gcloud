@@ -3,14 +3,11 @@ const datastore = gcloud.datastore();
 var heapdump = require('heapdump');
 
 function getUrl(urlId) {
-  console.log('Getting a new url');
+  const timeKey = `Time_${new Date()}`;
+  console.time(timeKey);
   const key = datastore.key(['Url', urlId]);
   datastore.get(key, (err, urlEntity) => {
-    if(err) {
-      console.log(err);
-    } else {
-      console.log(urlEntity);
-    }
+    console.timeEnd(timeKey);
   });
 }
 
