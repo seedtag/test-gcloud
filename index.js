@@ -7,6 +7,9 @@ function getUrl(urlId) {
   console.time(timeKey);
   const key = datastore.key(['UrlTest', urlId]);
   datastore.get(key, (err, urlEntity) => {
+    if (err) {
+      console.log(err);
+    }
     console.timeEnd(timeKey);
   });
 }
@@ -27,6 +30,9 @@ const entity = {
 datastore.save(
     entity,
     function (err) {
+      if (err) {
+        console.log(err);
+      }
       console.timeEnd('Creating url')
     }
   );
