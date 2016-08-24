@@ -5,7 +5,7 @@ const shortid = require('shortid');
 function getUrl(urlId) {
   const timeKey = `Time_${shortid.generate()}`;
   console.time(timeKey);
-  const key = datastore.key(['UrlTest', urlId]);
+  const key = datastore.key(['SherlockUrl', urlId]);
   datastore.get(key, (err, urlEntity) => {
     if (err) {
       console.log(err);
